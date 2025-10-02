@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Values from 'values.js'
+import SingleColor from './SingleColor'
 const App = () => {
   const [colorvalue,setColorvalue] = useState('')
   const [mycolor,setMycolor] = useState('')
@@ -7,9 +8,9 @@ const App = () => {
   const handleColorChange = (e) => {
      e.preventDefault()
      setMycolor(colorvalue)
-
-     const mylist = new Values(colorvalue).all(10)
-     console.log(mylist)
+     const myColorList = new Values(colorvalue).all(10)
+     console.log(myColorList)
+     setList(myColorList)
   }
 
   return (
@@ -37,6 +38,12 @@ const App = () => {
        style={{backgroundColor : mycolor}}
        onClick={handleColorChange} className='my-2 text-center bg-blue-500 active:scale-90 hover:bg-blue-600 text-white font-semibold w-full rounded-md p-1 cursor-pointer duration-200'>Generate</button>
        
+    </div>
+
+    <div className="container gap-2  grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+         {list?.map((item,index)=>{
+          return <SingleColor />
+         })}
     </div>
     </>
   )
