@@ -1,16 +1,22 @@
 import React, { useState } from 'react'
 import Values from 'values.js'
 import SingleColor from './SingleColor'
+import toast from 'react-hot-toast'
 const App = () => {
   const [colorvalue,setColorvalue] = useState('')
   const [mycolor,setMycolor] = useState('')
   const [list,setList] = useState([])
   const handleColorChange = (e) => {
      e.preventDefault()
-     setMycolor(colorvalue)
+     
+     try{
+        setMycolor(colorvalue)
      const myColorList = new Values(colorvalue).all(10)
      console.log(myColorList)
      setList(myColorList)
+     }catch(error){
+        toast.error('Invalid Color')
+     }
   }
 
   return (
@@ -40,9 +46,9 @@ const App = () => {
        
     </div>
 
-    <div className="container gap-2  grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+    <div className="container gap-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
          {list?.map((item,index)=>{
-          return <SingleColor key={index} {...item}/>
+          return <SingleColor id={index} hexValue = {item.hex} {...item}/>
          })}
     </div>
     </>
