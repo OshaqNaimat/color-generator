@@ -4,7 +4,7 @@ import SingleColor from './SingleColor'
 const App = () => {
   const [colorvalue,setColorvalue] = useState('')
   const [mycolor,setMycolor] = useState('')
-  const [list,setList] = useState({})
+  const [list,setList] = useState([])
   const handleColorChange = (e) => {
      e.preventDefault()
      setMycolor(colorvalue)
@@ -42,7 +42,7 @@ const App = () => {
 
     <div className="container gap-2  grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
          {list?.map((item,index)=>{
-          return <SingleColor />
+          return <SingleColor key={index} {...item}/>
          })}
     </div>
     </>
