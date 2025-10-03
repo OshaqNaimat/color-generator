@@ -39,10 +39,12 @@ const App = () => {
        <h1
        style={{color : mycolor}}
        className='text-center text-2xl font-semibold'>Color Generator</h1>
-       <input value={colorvalue} onChange={(e)=>setColorvalue(e.target.value)} type="text" placeholder='e.g. red,blue' className='w-full outline-0 border p-1 rounded-md border-blue-400 border-[2px]' />
+       <input
+        
+       value={colorvalue} onChange={(e)=>setColorvalue(e.target.value)} type="text" placeholder='e.g. red,blue' className='w-full outline-0 border p-1 rounded-md  border-[2px]' />
        <button
        style={{backgroundColor : mycolor}}
-       onClick={handleColorChange} className='my-2 text-center bg-blue-500 active:scale-90 hover:bg-blue-600 text-white font-semibold w-full rounded-md p-1 cursor-pointer duration-200'>Generate</button>
+       onClick={handleColorChange} className='my-2 outline-none select-none text-center bg-black active:scale-90  text-white font-semibold w-full rounded-md p-1 cursor-pointer duration-200'>Generate</button>
        
     </div>
 
