@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Values from 'values.js'
 import SingleColor from './SingleColor'
-import toast from 'react-hot-toast'
+import toast, { Toaster } from 'react-hot-toast';
 const App = () => {
   const [colorvalue,setColorvalue] = useState('')
   const [mycolor,setMycolor] = useState('')
@@ -19,9 +19,12 @@ const App = () => {
      }
   }
   return (
+   
     <div
     style={{background : bg}}
     className='min-h-screen w-full  p-8 transition-colors duration-1000'>
+      <Toaster position="top-right" reverseOrder={false} />
+
     <div
     style={{
       boxShadow: `${mycolor} 0px 15px 25px, ${mycolor} 0px 5px 10px`
