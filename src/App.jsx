@@ -6,9 +6,9 @@ const App = () => {
   const [colorvalue,setColorvalue] = useState('')
   const [mycolor,setMycolor] = useState('')
   const [list,setList] = useState([])
+  const [bg,setBg] = useState( '' )
   const handleColorChange = (e) => {
-     e.preventDefault()
-     
+     e.preventDefault()     
      try{
         setMycolor(colorvalue)
      const myColorList = new Values(colorvalue).all(10)
@@ -18,9 +18,10 @@ const App = () => {
         toast.error('Invalid Color')
      }
   }
-
   return (
-    <>
+    <div
+    style={{background : bg}}
+    className='min-h-screen w-full  p-8 transition-colors duration-1000'>
     <div
     style={{
       boxShadow: `${mycolor} 0px 15px 25px, ${mycolor} 0px 5px 10px`
@@ -33,8 +34,9 @@ const App = () => {
      lg:w-1/3
      shadow-lg
      rounded-md
-     my-5
+     bg-white
      p-3
+     select-none
       `}>
        <h1
        style={{color : mycolor}}
@@ -47,13 +49,13 @@ const App = () => {
        onClick={handleColorChange} className='my-2 outline-none select-none text-center bg-black active:scale-90  text-white font-semibold w-full rounded-md p-1 cursor-pointer duration-200'>Generate</button>
        
     </div>
-
-    <div className="container gap-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+         
+    <div className="container gap-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 transition-colors ">
          {list?.map((item,index)=>{
-          return <SingleColor id={index} hexValue = {item.hex} {...item}/>
+          return <SingleColor setbg={setBg} id={index} hexValue = {item.hex} {...item} key={index}/>
          })}
     </div>
-    </>
+    </div>
   )
 }
 
